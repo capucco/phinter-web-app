@@ -30,7 +30,7 @@ export const Minted = styled.div`
 `;
 
 export const Description = styled.div`
-  margin-top: 5px;
+  margin: 5px 0 15px;
   padding: 20px;
   font-size: 20px;
   font-weight: 200;

@@ -34,6 +34,7 @@ export const Balance = styled.div`
 export const SignIn = styled.div`
   font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 export const AddAsset = styled.div`

@@ -2,7 +2,12 @@ import { useCallback } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { useMount } from 'react-use';
 
-import { injected, useWalletBalance } from 'components';
+import {
+  injected,
+  isMobileDevice,
+  useWalletBalance,
+  walletConnectConnector,
+} from 'components';
 
 import {
   AddAsset,
@@ -19,7 +24,7 @@ export const User = () => {
   const { account, activate, library } = useWeb3React();
 
   const handleClickSignInButton = useCallback(async () => {
-    await activate(injected);
+    await activate(isMobileDevice ? walletConnectConnector : injected);
   }, [activate]);
 
   const handleAddToWalletClick = useCallback(async () => {
@@ -38,15 +43,25 @@ export const User = () => {
   }, [library]);
 
   useMount(() => {
-    injected.isAuthorized().then(async isAuthorized => {
+    if (isMobileDevice) {
       try {
-        if (isAuthorized) {
-          await activate(injected);
+        if (walletConnectConnector) {
+          activate(walletConnectConnector);
         }
       } catch (e) {
         // e
       }
-    });
+    } else {
+      injected.isAuthorized().then(async isAuthorized => {
+        try {
+          if (isAuthorized) {
+            await activate(injected);
+          }
+        } catch (e) {
+          // e
+        }
+      });
+    }
   });
 
   return (
