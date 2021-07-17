@@ -6,13 +6,17 @@ export const Container = styled.div`
   align-items: center;
   height: 100%;
   width: ${({ theme }) => theme.media.mobile};
-  margin: 40px auto;
+  margin: 20px auto;
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    width: 90%;
+    width: 95%;
   }
 `;
 
 export const CardWrapper = styled.div`
   margin-bottom: 40px;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    width: 100%;
+  }
 `;

@@ -39,5 +39,5 @@ export const Description = styled.div`
 
 export const VideoPlayer = styled.video`
   object-fit: contain;
-  max-width: 100%;
+  width: 100%;
 `;

@@ -45,7 +45,7 @@ export const User = () => {
   useMount(() => {
     if (isMobileDevice) {
       try {
-        if (walletConnectConnector) {
+        if (walletConnectConnector?.walletConnectProvider?.accounts?.length) {
           activate(walletConnectConnector);
         }
       } catch (e) {

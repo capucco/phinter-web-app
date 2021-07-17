@@ -31,11 +31,23 @@ export const StyledModal = styled.div<{
   background: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `1px solid ${theme.colors.grey}`};
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 export const BodyWrapper = styled.div`
   max-height: 70vh;
   overflow-y: auto;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    max-height: 100vh;
+  }
 `;
 
 export const Body = styled.div`

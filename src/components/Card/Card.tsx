@@ -45,8 +45,8 @@ export const Card = ({ postId, mediaId, description, phintCount }: TCard) => {
         loop
         muted
         autoPlay
-        src={`${process.env.REACT_APP_API_URL}post/6f176874a17046c4ae120d23a6861349/${mediaId}`}
-        poster={`${process.env.REACT_APP_API_URL}post/6f176874a17046c4ae120d23a6861349/${mediaId}`}
+        src={`${process.env.REACT_APP_API_URL}/post/6f176874a17046c4ae120d23a6861349/${mediaId}`}
+        poster={`${process.env.REACT_APP_API_URL}/post/6f176874a17046c4ae120d23a6861349/${mediaId}`}
       />
       <Controls>
         <Minted>
