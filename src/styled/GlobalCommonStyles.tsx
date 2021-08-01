@@ -20,7 +20,7 @@ export const GlobalCommonStyles = ({ theme }: TGlobalCommonStyles) => (
       }
 
       body {
-        font-family: Arial, 'sans-serif';
+        font-family: Verdana, 'sans-serif';
         font-size: 16px;
         color: ${theme.colors.black};
       }

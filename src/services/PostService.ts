@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { TPost } from 'components';
+import { TPost } from 'app';
 
 export type TGetPostsResponse = TPost[];
 

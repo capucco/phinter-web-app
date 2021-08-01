@@ -1,8 +1,8 @@
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 
-import { Button, Modal, Textarea, useHttp } from 'components';
 import { PostService } from 'services';
+import { Button, Modal, Textarea, useHttp } from 'app';
 
 import { VideoPlayer, Wrapper } from './UploadModal.styled';
 
