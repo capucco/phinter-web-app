@@ -1,9 +1,9 @@
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 import { getHttpClient } from 'app';
 import { PostService } from 'services';
-
-export { Home as default } from 'layouts';
+import { Home } from 'layouts';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const http = getHttpClient();
@@ -19,3 +19,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
   }
 };
+
+const HomePage = props => (
+  <>
+    <Head>
+      <title>Phinter</title>
+      <meta property="og:title" content="Phinter" />
+      <meta
+        property="og:description"
+        content="Phinter - get paid for your daily content"
+      />
+      <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
+      <meta
+        property="og:image"
+        content={`${process.env.NEXT_PUBLIC_URL}/logo.png`}
+      />
+    </Head>
+    <Home {...props} />
+  </>
+);
+
+export default HomePage;

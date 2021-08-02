@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { isClient } from 'app';
+
 const createRootElement = (id: string) => {
   const root = document.createElement('div');
   root.setAttribute('id', id);
@@ -8,7 +10,9 @@ const createRootElement = (id: string) => {
 
 export const usePortal = (id: string): HTMLDivElement | null => {
   const [isMounted, setMounted] = useState<boolean>(false);
-  const portalElement = useRef(document.createElement('div')).current;
+  const portalElement = useRef(
+    isClient() ? document.createElement('div') : null
+  ).current;
 
   useEffect(() => {
     const existingParent = document.getElementById(id);

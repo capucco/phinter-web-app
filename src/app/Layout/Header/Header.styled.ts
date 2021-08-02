@@ -18,4 +18,5 @@ export const Logo = styled.div`
   justify-content: center;
   width: 70px;
   margin-left: 20px;
+  cursor: pointer;
 `;

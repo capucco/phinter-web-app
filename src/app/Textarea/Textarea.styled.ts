@@ -32,6 +32,7 @@ export const StyledTextarea = styled.textarea<{
   border: 1px solid
     ${({ theme, isError }) =>
       isError ? theme.colors.grey : theme.colors.black};
+  font-family: Verdana, 'sans-serif';
   transition: border-color ease-out 0.3s;
   resize: none;
   appearance: none;

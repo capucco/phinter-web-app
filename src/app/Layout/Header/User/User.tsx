@@ -5,6 +5,7 @@ import { useMount } from 'react-use';
 import {
   injected,
   isMobileDevice,
+  isProduction,
   useWalletBalance,
   walletConnectConnector,
 } from 'app';
@@ -33,7 +34,7 @@ export const User = () => {
       params: {
         type: 'ERC20',
         options: {
-          address: process.env.REACT_APP_TOKEN_ADDRESS,
+          address: process.env.NEXT_PUBLIC_TOKEN_ADDRESS,
           symbol: 'PHINT',
           decimals: 18,
           image: TOKEN_ICON,
@@ -70,7 +71,17 @@ export const User = () => {
         <LoggedUser>
           <Wallet>
             <Balance>
-              <span>Balance: {balance}</span>
+              Balance:&nbsp;
+              <a
+                href={`https://${
+                  !isProduction() ? `${process.env.NEXT_PUBLIC_NETWORK}.` : ''
+                }etherscan.io/token/${
+                  process.env.NEXT_PUBLIC_TOKEN_ADDRESS
+                }?a=${account}`}
+                target="_blank"
+              >
+                {Number(balance).toFixed(2)}
+              </a>
             </Balance>
             <AddAsset onClick={handleAddToWalletClick}>Add to wallet</AddAsset>
           </Wallet>

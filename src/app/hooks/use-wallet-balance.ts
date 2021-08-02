@@ -12,7 +12,7 @@ export const useWalletBalance = () => {
   const { account, library } = useWeb3React();
   const { data: balance, mutate } = useSWR(
     account
-      ? [process.env.REACT_APP_TOKEN_ADDRESS, 'balanceOf', account]
+      ? [process.env.NEXT_PUBLIC_TOKEN_ADDRESS, 'balanceOf', account]
       : null,
     {
       fetcher: web3Fetcher(library, tokenABI),
