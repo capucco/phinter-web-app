@@ -34,16 +34,12 @@ export const Input = styled.input<{
   isError?: boolean;
   inputStyle?: TEmotionProps;
   placeholderStyle?: TEmotionProps;
-  hasLeftSlot: boolean;
-  hasRightSlot: boolean;
 }>`
   width: 100%;
   height: 40px;
   border: 1px solid
-    ${({ theme, isError }) =>
-      isError ? theme.colors.grey : theme.colors.black};
-  padding: 10px ${({ hasRightSlot }) => (hasRightSlot ? 50 : 10)}px 10px
-    ${({ hasLeftSlot }) => (hasLeftSlot ? 50 : 10)}px;
+    ${({ theme, isError }) => (isError ? theme.colors.red : theme.colors.grey)};
+  padding: 10px;
   transition: border-color ease-out 0.3s, color ease-out 0.3s;
   outline: none;
 
@@ -52,6 +48,10 @@ export const Input = styled.input<{
   &::placeholder {
     ${({ theme, placeholderStyle }) =>
       getComponentStyle(placeholderStyle, { theme })};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.black};
   }
 `;
 

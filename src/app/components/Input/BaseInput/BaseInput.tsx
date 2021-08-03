@@ -8,8 +8,6 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   message?: ReactNode;
   isError?: boolean;
-  leftSlot?: ReactNode;
-  rightSlot?: ReactNode;
   wrapperStyle?: TEmotionProps;
   labelStyle?: TEmotionProps;
   inputStyle?: TEmotionProps;
@@ -17,26 +15,10 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const BaseInput = forwardRef<HTMLInputElement, IInput>(
-  (
-    {
-      disabled,
-      label,
-      message,
-      wrapperStyle,
-      labelStyle,
-      leftSlot,
-      rightSlot,
-      ...rest
-    },
-    ref
-  ) => (
+  ({ disabled, label, message, wrapperStyle, labelStyle, ...rest }, ref) => (
     <Label isDisabled={disabled} {...{ wrapperStyle }}>
       {label && <LabelText {...{ labelStyle }}>{label}</LabelText>}
-      <Input
-        {...{ ...rest, ref, disabled }}
-        hasLeftSlot={Boolean(leftSlot)}
-        hasRightSlot={Boolean(rightSlot)}
-      />
+      <Input {...{ ...rest, ref, disabled }} />
       {message && <Message>{message}</Message>}
     </Label>
   )

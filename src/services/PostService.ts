@@ -18,8 +18,10 @@ export class PostService {
     return http.get<TGetPostResponse>(`post/${postId}`);
   }
 
-  static getPosts(http: AxiosInstance) {
-    return http.get<TGetPostsResponse>('post/list');
+  static getPosts(http: AxiosInstance, limit: number, offset: number) {
+    return http.get<TGetPostsResponse>(
+      `post/list?limit=${limit}&offset=${offset}`
+    );
   }
 
   static createPost(

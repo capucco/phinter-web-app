@@ -1,14 +1,7 @@
 export { Layout } from './Layout';
-export { DropArea } from './DropArea';
-export { Card } from './Card';
-export { Img } from './Img';
-export { Portal } from './Portal';
-export { Modal } from './Modal';
-export { Input } from './Input';
-export { Textarea } from './Textarea';
-export { Button } from './Button';
-export * from './Icon';
+export * from './components';
 export * from './types';
 export * from './utils';
+export * from './hocs';
 export * from './hooks';
 export * from './routes';

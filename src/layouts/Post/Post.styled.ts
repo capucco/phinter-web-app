@@ -16,7 +16,7 @@ export const Header = styled.div`
   width: 100%;
 `;
 
-export const CreatorImage = styled.div`
+export const CreatorImage = styled.img`
   width: 35px;
   height: 35px;
   margin-right: 15px;

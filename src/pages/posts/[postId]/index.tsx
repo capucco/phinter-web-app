@@ -1,22 +1,29 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
-import { TPost, getHttpClient, truncateString } from 'app';
+import {
+  TPost,
+  getHttpClient,
+  truncateString,
+  withAuthServerSideProps,
+} from 'app';
 import { PostService } from 'services';
 import { Post } from 'layouts';
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const http = getHttpClient();
-  try {
-    const data = await PostService.getPost(http, query.postId as string);
+export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
+  async ({ query }) => {
+    const http = getHttpClient();
+    try {
+      const data = await PostService.getPost(http, query.postId as string);
 
-    return {
-      props: { ...data },
-    };
-  } catch (e) {
-    return { props: {} };
+      return {
+        props: { ...data },
+      };
+    } catch (e) {
+      return { props: {} };
+    }
   }
-};
+);
 
 const PostPage = (props: TPost) => {
   const { mediaId, postId, header, description } = props;

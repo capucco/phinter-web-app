@@ -7,4 +7,5 @@ export * from './connectors';
 export { isMobileDevice } from './is-mobile-device';
 export * from './dayjs';
 export { truncateString } from './truncate-string';
+export { truncateHash } from './truncate-hash';
 export { randomGradient } from './random-gradient';

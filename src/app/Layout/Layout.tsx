@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, WheelEventHandler, forwardRef } from 'react';
 
 import { Header } from './Header';
 import { Footer } from './Footer';
@@ -6,13 +6,14 @@ import { Content, StyledLayout } from './Layout.styled';
 
 type TLayout = {
   children: ReactNode;
+  onWheel?: WheelEventHandler<HTMLDivElement>;
 };
 
 export const Layout = forwardRef<HTMLDivElement, TLayout>(
-  ({ children }, ref) => (
+  ({ children, onWheel }, ref) => (
     <StyledLayout {...{ ref }}>
       <Header />
-      <Content>{children}</Content>
+      <Content onWheel={onWheel}>{children}</Content>
       <Footer />
     </StyledLayout>
   )

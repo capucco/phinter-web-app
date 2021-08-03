@@ -1,24 +1,26 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
-import { getHttpClient } from 'app';
+import { getHttpClient, withAuthServerSideProps } from 'app';
 import { PostService } from 'services';
 import { Home } from 'layouts';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const http = getHttpClient();
-  try {
-    const posts = await PostService.getPosts(http);
+export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
+  async () => {
+    const http = getHttpClient();
+    try {
+      const posts = await PostService.getPosts(http, 10, 1);
 
-    return {
-      props: { posts },
-    };
-  } catch (e) {
-    return {
-      props: { posts: [] },
-    };
+      return {
+        props: { posts },
+      };
+    } catch (e) {
+      return {
+        props: { posts: [] },
+      };
+    }
   }
-};
+);
 
 const HomePage = props => (
   <>

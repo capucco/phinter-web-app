@@ -1,4 +1,4 @@
-import { Layout, TPost, dayjs, randomGradient } from 'app';
+import { Layout, TPost, dayjs } from 'app';
 
 import {
   Container,
@@ -18,7 +18,7 @@ export const Post = (post: TPost) => {
     <Layout>
       <Container>
         <Header>
-          <CreatorImage style={{ background: randomGradient }} />
+          <CreatorImage src={'/user.svg'} />
           <div>
             <CreatorName>{creatorAddress}</CreatorName>
             <Date>{dayjs().to(dayjs(creationDate))}</Date>

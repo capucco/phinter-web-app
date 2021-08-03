@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: ${({ theme }) => theme.media.mobile};
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   padding-bottom: 20px;
+  border-radius: 5px;
   cursor: default;
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
@@ -21,7 +21,7 @@ export const Header = styled.div`
   width: 100%;
 `;
 
-export const CreatorImage = styled.div`
+export const CreatorImage = styled.img`
   width: 35px;
   height: 35px;
   margin-right: 15px;
@@ -30,11 +30,12 @@ export const CreatorImage = styled.div`
 
 export const CreatorName = styled.div`
   font-size: 14px;
+  font-weight: 600;
 `;
 
 export const Date = styled.div`
   margin-top: 5px;
-  font-size: 11px;
+  font-size: 12px;
   color: ${({ theme }) => theme.colors.grey};
 `;
 

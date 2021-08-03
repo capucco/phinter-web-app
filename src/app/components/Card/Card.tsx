@@ -3,16 +3,10 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { useWeb3React } from '@web3-react/core';
 
-import {
-  Icon,
-  POST_PAGE_ROUTE,
-  dayjs,
-  randomGradient,
-  truncateString,
-  useHttp,
-} from 'app';
+import { Icon, POST_PAGE_ROUTE, dayjs, truncateString, useHttp } from 'app';
 import { PostService } from 'services';
 
+import { Comments } from './Comments';
 import {
   Container,
   Controls,
@@ -65,7 +59,7 @@ export const Card = ({
   return (
     <Container>
       <Header>
-        <CreatorImage style={{ background: randomGradient }} />
+        <CreatorImage src={'/user.svg'} />
         <div>
           <CreatorName>{creatorAddress}</CreatorName>
           <Date>{dayjs().to(dayjs(creationDate))}</Date>
@@ -131,6 +125,7 @@ export const Card = ({
           <Description>{truncateString(description, 500)}</Description>
         </Link>
       ) : null}
+      {/* <Comments postId={postId} /> */}
     </Container>
   );
 };
