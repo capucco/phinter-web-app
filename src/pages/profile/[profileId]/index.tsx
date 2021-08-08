@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
   async ({ query }) => {
     const http = getHttpClient();
     try {
-      const data = await PostService.getPost(http, query.postId as string);
+      const data = await PostService.getPost(http, query.profileId as string);
 
       return {
         props: { ...data },
