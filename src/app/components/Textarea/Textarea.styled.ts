@@ -29,7 +29,8 @@ export const StyledTextarea = styled.textarea<{
   width: 100%;
   min-height: 72px;
   padding: 10px;
-  border: 1px solid
+  border: none;
+  border-bottom: 1px solid
     ${({ theme, isError }) =>
       isError ? theme.colors.grey : theme.colors.black};
   font-family: Verdana, 'sans-serif';

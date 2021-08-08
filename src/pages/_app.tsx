@@ -5,7 +5,7 @@ import { Web3Provider } from '@ethersproject/providers';
 import { SWRConfig, SWRConfiguration } from 'swr';
 
 import { ThemeProvider } from 'styled';
-import { HttpProvider } from 'app';
+import { HttpProvider, withAuth } from 'app';
 
 const getLibrary = provider => {
   const library = new Web3Provider(provider);
@@ -30,12 +30,13 @@ const SWR_CONFIG: SWRConfiguration = {
 class EnhancedApp extends App {
   render() {
     const { Component, pageProps } = this.props;
+    const WrappedComponent = withAuth(Component);
 
     return (
       <ThemeProvider>
         <HttpProvider>
           <SWRConfig value={SWR_CONFIG}>
-            <Component {...pageProps} />
+            <WrappedComponent {...pageProps} />
           </SWRConfig>
         </HttpProvider>
       </ThemeProvider>

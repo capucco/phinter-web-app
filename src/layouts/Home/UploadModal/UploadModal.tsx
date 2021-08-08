@@ -55,6 +55,7 @@ export const UploadModal = ({ isOpen, onClose, media }: TUploadModal) => {
           onChange={e => setDescription(e.target.value)}
           placeholder="Text (+5)"
           wrapperStyle={{ width: '100%', marginTop: 10 }}
+          minLength={10}
         />
         <Button variant="secondary" onClick={handlePhintClick}>
           Phint it

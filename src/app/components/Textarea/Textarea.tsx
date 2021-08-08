@@ -29,6 +29,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextarea>(
     },
     ref
   ) => (
+    // Change this shit to auto height textarea
     <Label isDisabled={disabled} {...{ wrapperStyle }}>
       {label && <LabelText {...{ labelStyle }}>{label}</LabelText>}
       <StyledTextarea {...{ ...rest, ref, disabled, textareaStyle, isError }} />

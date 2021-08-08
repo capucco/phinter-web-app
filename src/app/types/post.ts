@@ -4,6 +4,8 @@ export type TPost = {
   description: string;
   creationDate: string;
   creatorAddress: string;
+  creatorId: string;
+  creatorName: string;
   mediaId: string;
   phintCount: string;
 };

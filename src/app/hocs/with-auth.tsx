@@ -9,7 +9,6 @@ import keccak256 from 'keccak256';
 
 import {
   TUser,
-  dayjs,
   getHttpClient,
   injected,
   isMobileDevice,
@@ -33,24 +32,7 @@ export const withAuthServerSideProps =
   (getServerSideProps?: GetServerSideProps): GetServerSideProps =>
   async ctx => {
     const http = getHttpClient();
-    const { token, token_expiration_date } = nextCookie(ctx);
-
-    if (
-      token_expiration_date &&
-      dayjs().isAfter(dayjs(token_expiration_date))
-    ) {
-      try {
-        const data = await UserService.refreshTokenData(http, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        cookie.set('token', data.token);
-        cookie.set('token_expiration_date', data.expirationDate);
-      } catch (e) {
-        /**/
-      }
-    }
+    const { token } = nextCookie(ctx);
 
     const result = getServerSideProps
       ? ((await getServerSideProps(ctx)) as {

@@ -37,6 +37,16 @@ export const SignIn = styled.div`
   cursor: pointer;
 `;
 
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Logout = styled.div`
+  cursor: pointer;
+  margin-right: 20px;
+`;
+
 export const AddAsset = styled.div`
   cursor: pointer;
 `;

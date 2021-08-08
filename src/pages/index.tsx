@@ -9,7 +9,8 @@ export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
   async () => {
     const http = getHttpClient();
     try {
-      const posts = await PostService.getPosts(http, 10, 1);
+      const posts = await PostService.getPosts(http, 10, 0);
+      console.log(posts);
 
       return {
         props: { posts },

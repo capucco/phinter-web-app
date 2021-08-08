@@ -2,13 +2,13 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
 import {
-  TPost,
+  TUser,
   getHttpClient,
   truncateString,
   withAuthServerSideProps,
 } from 'app';
 import { PostService } from 'services';
-import { Post } from 'layouts';
+import { Profile } from 'layouts';
 
 export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
   async ({ query }) => {
@@ -25,16 +25,16 @@ export const getServerSideProps: GetServerSideProps = withAuthServerSideProps(
   }
 );
 
-const PostPage = (props: TPost) => {
-  const { mediaId, postId, header, description } = props;
+const ProfilePage = (props: TUser) => {
+  const { userId, description, nickname, picture } = props;
 
   return (
     <>
       <Head>
-        <title>{header ? `Phinter: ${header}` : 'Phinter'}</title>
+        <title>{nickname ? `Phinter: ${nickname}` : 'Phinter'}</title>
         <meta
           property="og:title"
-          content={header ? `Phinter: ${header}` : 'Phinter'}
+          content={nickname ? `Phinter: ${nickname}` : 'Phinter'}
         />
         {description ? (
           <meta
@@ -44,16 +44,16 @@ const PostPage = (props: TPost) => {
         ) : null}
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_URL}/posts/${postId}`}
+          content={`${process.env.NEXT_PUBLIC_URL}/posts/${userId}`}
         />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_API_URL}/post/${postId}/${mediaId}`}
+          content={`${process.env.NEXT_PUBLIC_API_URL}/post/${userId}/${picture}`}
         />
       </Head>
-      <Post {...props} />
+      <Profile {...props} />
     </>
   );
 };
 
-export default PostPage;
+export default ProfilePage;

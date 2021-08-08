@@ -7,4 +7,5 @@ export { Modal } from './Modal';
 export { Input } from './Input';
 export { Textarea } from './Textarea';
 export { Button } from './Button';
+export { Comments } from './Comments';
 export * from './Icon';

@@ -3,10 +3,20 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { useWeb3React } from '@web3-react/core';
 
-import { Icon, POST_PAGE_ROUTE, dayjs, truncateString, useHttp } from 'app';
+import {
+  Comments,
+  Icon,
+  POST_PAGE_ROUTE,
+  PROFILE_PAGE_ROUTE,
+  TComment,
+  TEmotionProps,
+  TUser,
+  dayjs,
+  truncateString,
+  useHttp,
+} from 'app';
 import { PostService } from 'services';
 
-import { Comments } from './Comments';
 import {
   Container,
   Controls,
@@ -25,19 +35,34 @@ type TCard = {
   mediaId: string;
   header: string;
   description: string;
-  creatorAddress: string;
+  creator: TUser;
   creationDate: string;
   phintCount: string;
+  wrapperStyle?: TEmotionProps;
 };
+
+const MOCK_COMMENT: TComment[] = [
+  {
+    commentId: '1',
+    userId: '0xbf89412D61DB4fe5556E4262F49e64E1B44D205e',
+    text: 'You are genious!',
+  },
+  {
+    commentId: '2',
+    userId: '0xbf89412D61DB4fe5556E4262F49e64E1B44D205e',
+    text: 'Can I buy one? :)',
+  },
+];
 
 export const Card = ({
   postId,
   mediaId,
   header,
-  creatorAddress,
+  creator,
   creationDate,
   description,
   phintCount,
+  wrapperStyle,
 }: TCard) => {
   const http = useHttp();
   const [phinted, setPhinted] = useState(phintCount);
@@ -57,11 +82,15 @@ export const Card = ({
   }, []);
 
   return (
-    <Container>
+    <Container {...{ wrapperStyle }}>
       <Header>
-        <CreatorImage src={'/user.svg'} />
+        <Link href={PROFILE_PAGE_ROUTE} as={`/profile/${creator?.userId}`}>
+          <CreatorImage src={'/user.svg'} />
+        </Link>
         <div>
-          <CreatorName>{creatorAddress}</CreatorName>
+          <CreatorName>
+            {creator?.nickname ?? creator?.publicAccount}
+          </CreatorName>
           <Date>{dayjs().to(dayjs(creationDate))}</Date>
         </div>
       </Header>
@@ -125,7 +154,11 @@ export const Card = ({
           <Description>{truncateString(description, 500)}</Description>
         </Link>
       ) : null}
-      {/* <Comments postId={postId} /> */}
+      <Comments
+        postId={postId}
+        comments={MOCK_COMMENT}
+        wrapperStyle={{ margin: '10px 20px' }}
+      />
     </Container>
   );
 };

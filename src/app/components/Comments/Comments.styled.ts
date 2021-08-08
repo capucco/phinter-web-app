@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div``;
+import { TEmotionProps, getComponentStyle } from 'app';
+
+export const Container = styled.div<{ wrapperStyle: TEmotionProps }>`
+  ${({ theme, wrapperStyle }) => getComponentStyle(wrapperStyle, { theme })};
+`;
 
 export const Comment = styled.div`
   display: flex;
-  margin: 20px 20px 0;
+  margin-top: 20px;
 `;
 
 export const UserImage = styled.img`
@@ -28,5 +32,5 @@ export const Text = styled.p`
 export const Form = styled.div`
   display: flex;
   align-items: center;
-  margin: 20px 20px 0;
+  margin-top: 20px;
 `;

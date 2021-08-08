@@ -18,7 +18,7 @@ export type TWalletLoginCredentialsDto = {
 
 export class UserService {
   static getWalletNonce(http: AxiosInstance, publicAccount: string) {
-    return http.post<TNonceDataResponse>('/api/authentication/wallet/account', {
+    return http.post<TNonceDataResponse>('authentication/wallet/account', {
       publicAccount,
     });
   }
@@ -28,19 +28,19 @@ export class UserService {
     walletAuthCredentialsDto: TWalletLoginCredentialsDto
   ) {
     return http.post<TTokenDataResponse>(
-      '/api/authentication/wallet/authenticate',
+      'authentication/wallet/authenticate',
       walletAuthCredentialsDto
     );
   }
 
   static getProfile(http: AxiosInstance, config?: AxiosRequestConfig) {
-    return http.get<TUser>('api/user/profile', config);
+    return http.get<TUser>('user/profile', config);
   }
 
   static refreshTokenData(
     httpClient: AxiosInstance,
     config?: AxiosRequestConfig
   ) {
-    return httpClient.post('api/token/refresh', null, config);
+    return httpClient.post('token/refresh', null, config);
   }
 }

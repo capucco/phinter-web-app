@@ -37,9 +37,11 @@ export const Input = styled.input<{
 }>`
   width: 100%;
   height: 40px;
-  border: 1px solid
+  border: none;
+  border-bottom: 1px solid
     ${({ theme, isError }) => (isError ? theme.colors.red : theme.colors.grey)};
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  font-size: 14px;
   transition: border-color ease-out 0.3s, color ease-out 0.3s;
   outline: none;
 

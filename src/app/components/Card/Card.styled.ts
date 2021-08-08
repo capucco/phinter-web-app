@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+import { TEmotionProps, getComponentStyle } from 'app';
+
+export const Container = styled.div<{ wrapperStyle: TEmotionProps }>`
   display: flex;
   flex-direction: column;
   width: ${({ theme }) => theme.media.mobile};
@@ -8,6 +10,8 @@ export const Container = styled.div`
   padding-bottom: 20px;
   border-radius: 5px;
   cursor: default;
+
+  ${({ theme, wrapperStyle }) => getComponentStyle(wrapperStyle, { theme })};
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     width: 100%;
@@ -26,11 +30,13 @@ export const CreatorImage = styled.img`
   height: 35px;
   margin-right: 15px;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export const CreatorName = styled.div`
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 export const Date = styled.div`

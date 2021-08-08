@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: ${({ theme }) => theme.media.mobile};
-  margin: 20px auto;
+  margin: 5px auto 50px;
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     width: 95%;
@@ -21,15 +21,18 @@ export const CreatorImage = styled.img`
   height: 35px;
   margin-right: 15px;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export const CreatorName = styled.div`
   font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 `;
 
 export const Date = styled.div`
   margin-top: 5px;
-  font-size: 11px;
+  font-size: 12px;
   color: ${({ theme }) => theme.colors.grey};
 `;
 

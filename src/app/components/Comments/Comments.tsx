@@ -1,6 +1,6 @@
 import { KeyboardEvent, useCallback, useState } from 'react';
 
-import { Input, truncateHash, useHttp } from 'app';
+import { Input, TComment, TEmotionProps, truncateHash, useHttp } from 'app';
 import { CommentService } from 'services';
 
 import {
@@ -14,9 +14,11 @@ import {
 
 type TComments = {
   postId: string;
+  comments: TComment[];
+  wrapperStyle?: TEmotionProps;
 };
 
-export const Comments = ({ postId }: TComments) => {
+export const Comments = ({ comments, postId, wrapperStyle }: TComments) => {
   const http = useHttp();
   const [text, setText] = useState('');
 
@@ -31,19 +33,18 @@ export const Comments = ({ postId }: TComments) => {
   );
 
   return (
-    <Container>
-      <Comment>
-        <UserImage src={'/user.svg'} />
-        <div>
-          <CreatorName>
-            {truncateHash('0xbf89412D61DB4fe5556E4262F49e64E1B44D205e')}
-          </CreatorName>
-          <Text>
-            The modern English noun dwarf descends from the Old English dweorg.
-            It has a variety of cognates in other Germanic languages
-          </Text>
-        </div>
-      </Comment>
+    <Container {...{ wrapperStyle }}>
+      {comments?.map(({ text, commentId }) => (
+        <Comment key={commentId}>
+          <UserImage src={'/user.svg'} />
+          <div>
+            <CreatorName>
+              {truncateHash('0xbf89412D61DB4fe5556E4262F49e64E1B44D205e')}
+            </CreatorName>
+            <Text>{text}</Text>
+          </div>
+        </Comment>
+      ))}
       <Form>
         <UserImage src={'/user.svg'} />
         <Input
@@ -51,7 +52,7 @@ export const Comments = ({ postId }: TComments) => {
           onChange={e => setText(e.target.value)}
           onKeyDown={handleKeyDown}
           wrapperStyle={{ width: '100%' }}
-          inputStyle={{ height: 30, borderRadius: 5 }}
+          inputStyle={{ height: 30 }}
         />
       </Form>
     </Container>
